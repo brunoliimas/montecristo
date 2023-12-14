@@ -653,11 +653,8 @@ require_once APPPATH . 'views/html/rolex/header.php';
                         <div class="content">
                             <div readonly class="formcontato-form-address">
                                 <select required name="address" readonly>
-                                    <option>Endereço da boutique</option>
-                                    <option selected value="são paulo">Shopping JK Iguatemi Avenida Presidente Juscelino
-                                        Kubitschek
-                                        2041 loja 148
-                                    </option>
+                                <option>Shopping Iguatemi Campinas - Av. Iguatemi, 777 - Loja 140 - Vila Brandina, Campinas - SP</option>
+                                    <option selected value="são paulo">Shopping JK Iguatemi - Av. Presidente Juscelino Kubitschek, 2041 - loja 148 - Itaim Bibi, São Paulo - SP</option>
                                 </select>
                                 <label aria-hidden="true" tabindex="-1" aria-label="city" for="city" class="formcontato-form-address-label">Endereço da boutique</label>
                             </div>
