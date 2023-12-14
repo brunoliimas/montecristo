@@ -1,0 +1,288 @@
+<h1 class="listagem">HOME/<span>MEU CADASTRO </span></h1>	
+<div class="d-perfil-usuario">
+	<ul>
+		<!--Pincipal--><li class="s-principal"><a href="#" class="s-principal" >Meu Cadastro</a></li><!--Marcada-->
+		<li><a href="{index}us_conta">Minha Conta </a></li>
+		<li><a href="{index}us_cad">Meu Cadastro </a></li>
+		<li><a href="{index}us_end">Meus Endereços</a></li>
+		<li><a href="{index}us_hist">Histórico de Compras</a></li>
+		<li><a href="{index}us_acomp">Acompanhar Pedidos</a></li>
+		<li><a href="{index}us_desejo">Meus Favoritos</a></li>
+		<li><a href="{index}us_bonus">Meus Bônus</a></li>
+		<li class="s-borda"><a href="{index}us_news">Newsletter</a></li>
+	</ul>
+	
+	
+	<br clear="all">	
+	<br clear="all">	
+		
+	<div class="d-container-vistos">
+		<p class="p-titulo">Produtos vistos:</p>
+		<a href="javascript:up()" id="up"><img src="{path}img/up-vistos.jpg"></a>
+		<div class="box_visto">
+			<div class="d-vistos">
+				<!-- BEGIN BLOCK_HISTORICO_PRODUTOS -->
+				{produtosVistos}
+				<!-- END BLOCK_HISTORICO_PRODUTOS -->
+			</div>
+		</div>
+		<br />
+		<a href="javascript:down()" id="down"><img src="{path}img/down-vistos.jpg"></a>	
+	</div>
+</div>
+<div class="d-perfil-dir">
+	<h2> Meu Cadastro </h2>
+	<div class="d-cadastro" style="width:700px;">
+		<form method="POST" action="{index}us_cad"name="formCadastro">
+			<input type="hidden" name="token" value="{token}" />
+			<input type="hidden" name="enviar" value="1" />
+			<input type="hidden" name="cadastro[id]" value="{cadastro->id}" />
+			<input type="hidden" name="atualiza" value="SIM" />
+			<table class="t-cadastro">
+				<tr>
+					<td style="width:230px;">
+						<p class="campo"><label for="cadNome">Nome</label> <span class="required_field">*</span></p>
+						<input type="text" maxlength="60" name="cadastro[nome]" id="cadNome" value="{cadastro->nome}" class="text">
+						<span class="error" style="display:none;{msg->nome_display}" id="msg[nome]">{msg->nome}</span>
+					</td>
+					<td>
+						<p class="campo"><label for="cadSobrenome">Sobrenome</label> <span class="required_field">*</span></p>
+						<input type="text" maxlength="60" name="cadastro[sobrenome]" id="cadSobrenome" value="{cadastro->sobrenome}" class="text" style="width:250px;">
+						<span class="error" style="display:none;{msg->nome_display}" id="msg[sobrenome]">{msg->nome}</span>
+					</td>				
+				</tr>
+				<tr>
+					<td>
+						<p class="campo"><label for="cadastro_data_nascimento">Data de Nascimento </label><span class="required_field">*</span></p>
+						<input type="text" name="cadastro[data_nascimento]" id="cadastro_data_nascimento" value="{cadastro->data_nascimento_formatada}" class="text"><span class="s-form-dir"></span>
+						<span class="error" style="display:none;{msg->nome_display}" id="msg[nome]">{msg->nome}</span>
+					</td>
+					<td>
+						<p class="campo-sexo"><label for="cadNome">Sexo<span class="required_field">*</span></p>					
+						<span class="s-sexo"><input type="radio" class="s-checkbox" name="cadastro[sexo]" value="M" id="cadastro_sexo_m" {cadastro->sexo_m_checked} > </span><label for="cadastro_sexo_m" class="mas">Masculino</label>&nbsp;&nbsp;
+						<span class="s-sexo"><input type="radio" class="s-checkbox" name="cadastro[sexo]" value="F" id="cadastro_sexo_f" {cadastro->sexo_f_checked}> </span><label for="cadastro_sexo_f" class="fem">Feminino</label>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<p class="campo"><label for="cadastro_cpf">CPF</label> <span class="required_field">*</span></p>
+						<input type="text" maxlength="20" name="cadastro[cpf]" id="cadastro_cpf" value="{cadastro->cpf}" class="text">
+						<span class="error" style="display:none;{msg->nome_display}" id="msg[nome]">{msg->nome}</span>
+					</td>	
+					<td>
+						&nbsp;
+						<!-- <p class="campo"><label for="cadastro_rg">RG</label> <span class="required_field">*</span></p>
+						<input type="text" maxlength="20" name="cadastro[rg]" id="cadastro_rg" value="{cadastro->rg}" class="text">
+						<span class="error" style="display:none;{msg->nome_display}" id="msg[nome]">{msg->nome}</span> -->
+					</td>			
+				</tr>
+				<tr>
+					<td>
+						<!-- <p class="campo"><label for="cadastro_fone_res_ddd">DDD</label> <label for="cadastro_fone_res">Telefone</label><span class="required_field">*</span></p>
+						<input type="text" class="text" name="cadastro[fone_res_ddd]" id="cadastro_fone_res_ddd" value="{cadastro->fone_res_ddd}" maxlength="2" style="width:25px">
+						-	-->
+						<p class="campo"><label for="cadastro_fone_res">Telefone</label> <span class="required_field">*</span></p>
+						<input type="text" class="text" name="cadastro[fone_res]" id="cadastro_fone_res" value="{cadastro->fone_res}" maxlength="13" style="width:99px;" onkeypress="javascript: $('#cadastro_fone_res').val(verificaDigito(this));">
+						<span class="error" style="display:none;{msg->fone_res_display}" id="msg[fone_tes]">{msg->fone_com}</span>
+					</td>
+					<td>
+						<!-- <p class="campo"><label for="cadastro_fone_cel_ddd">DDD</label> <label for="cadastro_fone_cel">Celular</label> <span class="required_field">*</span></p>
+						<input type="text" class="text" name="cadastro[fone_cel_ddd]" id="cadastro_fone_cel_ddd" value="{cadastro->fone_cel_ddd}" maxlength="2" style="width:25px" onkeyup="ddd(this)" />
+						- -->
+						<p class="campo"><label for="cadastro_fone_cel">Celular</label> <span class="required_field">*</span></p>
+						<input type="text" class="text" name="cadastro[fone_cel]" id="cadastro_fone_cel"  value="{cadastro->fone_cel}" maxlength="14" style="width:120px;" onkeypress="javascript: $('#cadastro_fone_cel').val(verificaDigito(this));">
+						<span class="error" style="display:none;{msg->fone_com_display}" id="msg[fone_com]">{msg->fone_com}</span>
+					</td>
+				</tr>
+				<!--<tr>
+					<td>
+						<p class="campo"><label for="cadastro_cep">CEP</label><span class="required_field">*</span></p>
+						<span class="s-form-esq"></span>
+						<input type="text" class="text" name="cadastro[cep]" id="cadastro_cep" value="{cadastro->cep}" onblur="atualizacadastro()" maxlength="9">
+						<span class="s-form-dir"></span>
+						<!--a href="javascript:abreCorreio()">Não sabe seu CEP? Consulte aqui.</a-->
+						<!-- <span class="error" id="msg[cep]">{msg->cep}</span>-->
+						<!--<span class="error" style="display:none;{msg->cep_display}" id="msg[cep]">{msg->cep}</span>
+					</td>
+				</tr>				
+				<tr>
+					<td>
+						<p class="campo"><label for="cadEndereco">Endere&ccedil;o</label><span class="required_field">*</span></p>
+						<input type="text" class="text" maxlength="60" id="cadEndereco" name="cadastro[logradouro]" value="{cadastro->logradouro}" style="width:213px;" >
+						<!--<span class="error" id="msg[logradouro]">{msg->logradouro}</span>-->
+						<!--<span class="error" style="display:none;{msg->logradouro_display}" id="msg[logradouro]">{msg->logradouro}</span>
+					</td>
+					<td>
+						<p class="campo"><label for="cadNumero">N&uacute;mero</label><span class="required_field">*</span></p>
+						<input type="text" class="text" maxlength="10" id="cadNumero" name="cadastro[numero]" value="{cadastro->numero}" style="width:75px;">
+						<!--<span class="error" id="msg[numero]">{msg->numero}</span>-->
+						<!--<span class="error" style="display:none;{msg->numero}" id="msg[numero]">{msg->numero}</span>
+					</td>				
+				</tr>
+				<tr>
+					<td>
+						<p class="campo"><label for="cadBairro">Bairro</label><span class="required_field">*</span></p>
+						<input type="text" class="text" name="cadastro[bairro]" id="cadBairro" maxlength="60" value="{cadastro->bairro}" style="width:213px;">
+						<span class="error" style="display:none;{msg->bairro}" id="msg[bairro]">{msg->bairro}</span>
+					</td>
+					<td>
+						<p class="campo"><label for="cadComplemento">Complemento</label></p>
+						<input type="text" class="text" maxlength="30" id="cadComplemento" name="cadastro[complemento]" value="{cadastro->complemento}" style="width:250px;">
+						<span class="error" style="display:none;{msg->numero}" id="msg[numero]">{msg->numero}</span>
+					</td>				
+				</tr>
+				<tr>
+					<td>
+						<p class="campo"><label for="cadCidade">Cidade</label><span class="required_field">*</span></p>
+						<input type="text" class="text"  name="cadastro[cidade]" id="cadCidade" maxlength="60" value="{cadastro->cidade}" style="width:213px;">
+						<span class="error" style="display:none;{msg->cidade}" id="msg[cidade]">{msg->cidade}</span>
+					</td>
+					<td>
+						<p class="campo"><label for="cadEstado">Estado</label><span class="required_field">*</span></p>
+						</span><input type="text" class="text" name="cadastro[uf]" id="cadEstado" value="{cadastro->uf}" style="width:80px;" maxlength="2">
+						<!--<select name="cadastro[uf]" class="cadastro-select">-->
+						<!--<option value="">Selecione</option>-->
+						<!-- BEGIN BLOCK_ESTADO -->
+							<!--<option value="{estado->uf}" {estado->selected} >{estado->nome}</option>-->
+						<!-- END BLOCK_ESTADO -->
+						<!--</select>-->
+						<!--<span class="error" id="msg[uf]">{msg->uf}</span>-->
+						<!--<span class="error" style="display:none;{msg->uf}" id="msg[uf]">{msg->uf}</span>
+					</td>
+				</tr> -->
+				<tr>
+					<td colspan="2">
+						<p class="campo"><label for="cadastro_email">E-mail </label><span class="required_field">*</span></p>
+						<!--span class="s-email-travado">{cadastro->email}</span>
+						<a href="{index}ped_ident">Alterar o E-mail</a-->
+						<input type="text" name="cadastro[email]" id="cadastro_email" value="{cadastro->email}" class="text"  style="width:213px;">
+						<span class="error" style="display:none;{msg->nome_display}" id="msg[nome]">{msg->nome}</span>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<p class="campo"><label for="cadSenha">Senha </label><span class="required_field">*</span></p>
+						<input type="password" class="text" name="senha" id="cadSenha"/>
+						<span class="error" style="display:none;{msg->senha_display}" id="msg[senha]">{msg->senha}</span>
+					</td>
+					<td>
+						<p class="campo"><label for="cadConfirme">Confirme a Senha</label> <span class="required_field">*</span></p>
+						<input type="password" class="text" name="senha1" id="cadConfirme"/>
+					</td>				
+				</tr>				
+				<!-- BEGIN BLOCK_MSG_SENHA -->
+				<tr>
+					<td>
+						<span>(Só preencha a senha caso queira alterar a atual)</span>
+					</td>
+				</tr>
+				<!-- END BLOCK_MSG_SENHA -->
+			</table>
+			<br clear="all">
+			<div class="d-baixo-cadastro">
+				<span class="check">
+					<input type="checkbox" class="checkbox-posicao" name="cadastro[st_newsletter]" id="st_newsletter" value="S" {cadastro->st_newsletter_checked} />
+				</span>
+				<label for="st_newsletter">
+					Quero receber informações em meu e-mail (Newsletter)
+				</label>
+				<input type="submit" class="button" value="Salvar" />
+			</div>
+		</form>
+	</div>
+</div>
+<script language="javascript">
+
+	var f = document.forms.formCadastro;
+
+	var atualizacadastro = function(){
+		$.ajax({
+			type: 'GET'
+			,url: '{index}get_endereco_json/'+f.elements['cadastro[cep]'].value+'/'+ new Date().getSeconds()
+			,success: function(msg){
+				var temp = eval(msg);
+				if (temp){
+					f.elements['cadastro[logradouro]'].value = unescape(temp.logradouro.replace(/\+/g," "));
+					f.elements['cadastro[bairro]'].value = unescape(temp.bairro.replace(/\+/g," "));
+					f.elements['cadastro[cidade]'].value = unescape(temp.cidade.replace(/\+/g," "));
+					f.elements['cadastro[uf]'].value = unescape(temp.uf.replace(/\+/g," "));
+				}
+			}
+		});
+	}
+
+	function abreCorreio(){
+		window.open('http://www.buscacep.correios.com.br/','ShowCep','location=no,resize=no, width=730,height=400,left=18,top=18,maximized=0,scrollbars=1');
+	}
+	
+	if(f.elements['cadastro[cep]']){
+		// MaskInput(f.elements['cadastro[cep]'], '99999-999');
+		$('#cadastro_cep').mask('99999-999');
+	}
+
+	if(f.elements['cadastro[rg]']){
+		// MaskInput(f.elements['cadastro[rg]'], '99.999.999-*');
+		// $('#cadastro_rg').mask('99.999.999?-*');
+	}
+	if(f.elements['cadastro[cpf]']){
+		// MaskInput(f.elements['cadastro[cpf]'], '999.999.999-99');
+		$('#cadastro_cpf').mask('999.999.999-99');
+	}
+	if(f.elements['cadastro[cnpj]']){
+		// MaskInput(f.elements['cadastro[cnpj]'], '99.999.999/9999-99');
+		$('#cadastro_cnpj').mask('99.999.999/9999-99');
+	}
+
+	//if(f.elements['cadastro[fone_com_ddd]']){
+		// MaskInput(f.elements['cadastro[fone_com_ddd]'], '99');
+		//$('#cadastro_fone_com_ddd').mask('99');
+	//}
+	
+	//if(f.elements['cadastro[fone_com]']){
+		// MaskInput(f.elements['cadastro[fone_com]'], '9999-9999');
+		//$('#cadastro_fone_com').mask('9999-9999');
+	//}
+
+	//if(f.elements['cadastro[fone_res_ddd]']){
+		// MaskInput(f.elements['cadastro[fone_res_ddd]'], '99');
+		//$('#cadastro_fone_res_ddd').mask('99');
+	//}
+	
+	//if(f.elements['cadastro[fone_res]']){
+		// MaskInput(f.elements['cadastro[fone_res]'], '9999-9999');
+		//$('#cadastro_fone_res').mask('(99)9999-9999');
+	//}
+
+	//if(f.elements['cadastro[fone_cel_ddd]']){
+		// MaskInput(f.elements['cadastro[fone_cel_ddd]'], '99');
+		//$('#cadastro_fone_cel_ddd').mask('99');
+	//}
+	
+	//if(f.elements['cadastro[fone_cel]']){
+		// MaskInput(f.elements['cadastro[fone_cel]'], '9999-9999');
+		//$('#cadastro_fone_cel').mask('(99)99999-9999');
+	//}
+	
+	if(f.elements['cadastro[data_nascimento]']){
+		// MaskInput(f.elements['cadastro[data_nascimento]'], '99/99/9999');
+		$('#cadastro_data_nascimento').mask('99/99/9999');
+	}
+
+	if(f.elements['cadastro[fone_nextel]']){
+		//MaskInput(f.elements['cadastro[fone_nextel]'], '99-99999999');
+	}
+	
+	if(f.elements['cadastro[comoconheceu_id]']
+		&&f.elements['cadastro[comoconheceu_id]'].tagName=='SELECT'){
+	
+		$.ajax({
+			type: 'GET'
+			,url: '{sistema}ajax_comoconheceu_options/?blank=1/'+ new Date().getSeconds()
+			,success: function(msg){
+				f.elements['cadastro[comoconheceu_id]'].innerHTML = msg;
+				selCombo(f.elements['cadastro[comoconheceu_id]'], '{cadastro->comoconheceu_id}');
+			}
+		});	
+	}
+
+</script>

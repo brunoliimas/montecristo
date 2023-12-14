@@ -1,0 +1,262 @@
+<h1 class="listagem">HOME/<span>MEUS ENDEREÇOS</span></h1>	
+<div class="d-perfil-usuario">
+	<ul>
+		<li class="s-principal"><a href="#" class="s-principal" >Meu Cadastro</a></li>
+		<li><a href="{index}us_conta">Minha Conta</a></li>
+		<li><a href="{index}us_cad">Meu Cadastro</a></li>
+		<li><a href="{index}us_end">Meus Endereços</a></li>
+		<li><a href="{index}us_hist">Histórico de Compras</a></li>
+		<li><a href="{index}us_acomp">Acompanhar Pedidos</a></li>
+		<li><a href="{index}us_desejo">Meus Favoritos</a></li>
+		<li><a href="{index}us_bonus">Meus Bônus</a></li>
+		<li class="s-borda"><a href="{index}us_news">Newsletter</a></li>
+	</ul>
+	
+	<div class="d-container-vistos">
+		<p class="p-titulo">Produtos vistos:</p>
+		<a href="javascript:up()" id="up"><img src="{path}img/up-vistos.jpg"></a>
+		<div class="box_visto">
+			<div class="d-vistos">
+				<!-- BEGIN BLOCK_HISTORICO_PRODUTOS -->
+				{produtosVistos}
+				<!-- END BLOCK_HISTORICO_PRODUTOS -->
+			</div>
+		</div>
+		<br />
+		<a href="javascript:down()" id="down"><img src="{path}img/down-vistos.jpg"></a>	
+	</div>
+	
+</div>
+<div class="d-perfil-dir">
+	<h2>Editar endereço</h2>
+	<div class="d-cadastro" style="width:700px;">
+		<form method="POST" name="formCadastro">
+			<input type="hidden" name="token" value="{token}" />
+			<input type="hidden" name="enviar" value="1" />
+			<input type="hidden" name="id" value="{endereco->id}" />
+			<table class="t-cadastro" border="0">
+				<!-- <tr>
+					<td style="width:230px;">
+						<p class="campo"><label for="cadNome">Nome</label> <span class="required_field">*</span></p>
+						<input type="text" maxlength="60" name="endereco[nome]" id="cadNome" style="width:213px;" value="{endereco->nome}" class="text">
+						
+					</td>
+					<td>
+						<p class="campo"><label for="cadSobrenome">Sobrenome</label> <span class="required_field">*</span></p>
+						<input type="text" maxlength="60" name="endereco[sobrenome]" id="cadSobrenome" value="{endereco->sobrenome}" class="text" style="width:265px;">
+					
+					</td>				
+				</tr>
+				<tr>
+					<td>
+						<p class="campo"><label for="endereco_fone_res_ddd">DDD</label> <label for="endereco_fone_res">Telefone</label><span class="required_field">*</span></p>
+						<input type="text" class="text" name="endereco[fone_res_ddd]" id="endereco_fone_res_ddd" value="{endereco->fone_res_ddd}" maxlength="2" style="width:25px" onkeyup="ddd2(this)" />
+						-	
+						<input type="text" class="text" name="endereco[fone_res]" id="endereco_fone_res" value="{endereco->fone_res}" maxlength="8" style="width:89px;">
+						
+					</td>
+					<td>
+						<p class="campo"><label for="endereco_fone_cel_ddd">DDD</label> <label for="endereco_fone_cel">Celular</label> <span class="required_field">*</span></p>
+						<input type="text" class="text" name="endereco[fone_cel_ddd]" id="endereco_fone_cel_ddd" value="{endereco->fone_cel_ddd}" maxlength="2" style="width:25px" onkeyup="ddd(this)" onfocus="javascript:this.value='' " />
+						-
+						<span id="nono_digito" style="color:#999">{nono}&nbsp;</span><input type="text" class="text" name="endereco[fone_cel]" id="endereco_fone_cel"  value="{endereco->fone_cel}" maxlength="9" style="width:110px;">
+						<input type="hidden" value="{nono}" id="nono_d" name="nono_digito" />
+					</td>
+				</tr>-->
+				<tr>
+					<td>
+						<p class="campo"><label for="endereco_cep">CEP</label><span class="required_field">*</span></p>
+						<span class="s-form-esq"></span>
+						<input type="text" class="text" name="endereco[cep]" id="endereco_cep" value="{endereco->cep}" onblur="atualizaCad()" maxlength="9" style="width:213px;">
+						<span class="s-form-dir"></span>
+						<!--a href="javascript:abreCorreio()">Não sabe seu CEP? Consulte aqui.</a-->
+						<!-- <span class="error" id="msg[cep]">{msg->cep}</span>-->
+					
+					<!-- </td>
+					<td><a href="http://www.buscacep.correios.com.br/servicos/dnec/index.do" target="_blank" class="a-mais">(saiba mais)</a></td>
+				</tr>-->
+				<tr>
+					<td>
+						<p class="campo"><label for="cadEndereco">Endere&ccedil;o</label><span class="required_field">*</span></p>
+						<input type="text" class="text" maxlength="60" id="cadEndereco" name="endereco[logradouro]" value="{endereco->logradouro}" style="width:213px;" >
+						<!--<span class="error" id="msg[logradouro]">{msg->logradouro}</span>-->
+						
+					</td>
+					<td>
+						<p class="campo"><label for="cadNumero">N&uacute;mero</label><span class="required_field">*</span></p>
+						<input type="text" class="text" maxlength="10" id="cadNumero" name="endereco[numero]" value="{endereco->numero}" style="width:75px;">
+						<!--<span class="error" id="msg[numero]">{msg->numero}</span>-->
+						
+					</td>				
+				</tr>
+				<tr>
+					<td>
+						<p class="campo"><label for="cadBairro">Bairro</label><span class="required_field">*</span></p>
+						<input type="text" class="text" name="endereco[bairro]" id="cadBairro" maxlength="60" value="{endereco->bairro}" style="width:213px;">
+						
+					</td>
+					<td>
+						<p class="campo"><label for="cadComplemento">Complemento</label></p>
+						<input type="text" class="text" maxlength="30" id="cadComplemento" name="endereco[complemento]" value="{endereco->complemento}" style="width:265px;">
+						
+					</td>				
+				</tr>
+				<tr>
+					<td>
+						<p class="campo"><label for="cadCidade">Cidade</label><span class="required_field">*</span></p>
+						<input type="text" class="text"  name="endereco[cidade]" id="cadCidade" maxlength="60" value="{endereco->cidade}" style="width:213px;">
+						
+					</td>
+					<td>
+						<p class="campo"><label for="cadEstado">Estado</label><span class="required_field">*</span></p>
+						</span><input type="text" class="text" name="endereco[uf]" id="cadEstado" value="{endereco->uf}" style="width:80px;" maxlength="2">
+					
+					</td>
+				</tr>
+				
+				<tr>
+					<td colspan="2">
+						<p class="campo"><label for="cadPtoReferencia">Referência para entrega</label></p>
+						<input type="text" class="text"  name="endereco[pto_referencia]" id="cadPtoReferencia" maxlength="60" value="{endereco->pto_referencia}" style="width:497px;">
+						
+					</td>
+				</tr>
+				
+				<tr>
+					<td colspan="2">
+						<p class="campo"><label for="st_cobranca_padrao">Definir como endereço de cobrança padrão</label> 
+						<input type="checkbox" class="checkbox-posicao" name="endereco[st_cobranca_padrao]" id="st_cobranca_padrao" value="S" {endereco->st_cobranca_padrao_checked} /></p>
+						
+						<p class="campo"><label for="st_entrega_padrao">Definir como endereço de entrega padrão</label>
+						<input type="checkbox" class="checkbox-posicao" name="endereco[st_entrega_padrao]" id="st_entrega_padrao" value="S" {endereco->st_entrega_padrao_checked} /></p>
+					</td>
+				</tr>
+				<tr><td>
+				<!-- BEGIN BLOCK_DELETAR_END -->
+					<a class="a-mais" style="text-decoration:underline;cursor:pointer" onclick="excluir()">Deletar endereço</a>
+				<!-- END BLOCK_DELETAR_END -->
+				</td><tr>	
+			</table>
+			<br clear="all" />
+			<br clear="all" />
+			<div class="d-baixo-cadastro">
+				<a href="{index}{tela_anterior}" class="a-voltar" value="Salvar" /> Voltar </a>
+				<input type="submit" class="button" value="Salvar" style="margin-right:95px;" />
+			</div>
+		</form>
+	</div>
+</div>
+<script language="javascript">
+	function excluir(){
+		if(confirm('Deseja mesmo excluir esse endereço?')){
+			location.href = "{index}us_end_edit?delete='SIM'&id={endereco->id}";
+		}
+	}	
+	
+
+	var f = document.forms.formCadastro;	
+	
+	if(f.elements['endereco[fone_res_ddd]']){
+		//MaskInput(f.elements['endereco[fone_res_ddd]'], '99');
+		$('#endereco_fone_res_ddd').mask('99');
+	}
+	if(f.elements['endereco[fone_res]']){
+		//MaskInput(f.elements['endereco[fone_res]'], '99999999');
+		$('#endereco_fone_res').mask('9999-9999');
+	}		
+	
+	if(f.elements['endereco[fone_cel_ddd]']){
+		// MaskInput(f.elements['cadastro[fone_cel_ddd]'], '99');
+		$('#endereco_fone_cel_ddd').mask('99');
+		
+	}
+	if(f.elements['endereco[fone_cel]']){
+		// MaskInput(f.elements['cadastro[fone_cel]'], '9999-9999');
+		$('#endereco_fone_cel').mask('9999-9999');
+	}
+	
+	if(f.elements['endereco[cep]']){
+		// MaskInput(f.elements['cadastro[cep]'], '99999-999');
+		$('#endereco_cep').mask('99999-999');
+	}
+	var atualizacadastro = function(){
+		$.ajax({
+			type: 'GET'
+			,url: '{index}get_endereco_json/'+f.elements['endereco[cep]'].value+'/'+ new Date().getSeconds()
+			,success: function(msg){
+				var temp = eval(msg);
+				if (temp){
+					f.elements['endereco[logradouro]'].value = unescape(temp.logradouro.replace(/\+/g," "));
+					f.elements['endereco[bairro]'].value = unescape(temp.bairro.replace(/\+/g," "));
+					f.elements['endereco[cidade]'].value = unescape(temp.cidade.replace(/\+/g," "));
+					f.elements['endereco[uf]'].value = unescape(temp.uf.replace(/\+/g," "));
+				}
+			}
+		});
+	}
+	
+	function atualizaCad(){
+		atualizacadastro;
+	}
+	
+	
+	function abreCorreio(){
+		window.open('http://www.buscacep.correios.com.br/','ShowCep','location=no,resize=no, width=730,height=400,left=18,top=18,maximized=0,scrollbars=1');
+	}
+	
+	
+	function ddd2(D){		
+		valor = D.value;
+		reg=/[0-9]+[0-9]+/;
+		if(reg.test(valor)){
+			$('#endereco_fone_res').focus();
+		}
+	}
+	
+/*
+	if(f.elements['cadastro[rg]']){
+		// MaskInput(f.elements['cadastro[rg]'], '99.999.999-*');
+		// $('#cadastro_rg').mask('99.999.999?-*');
+	}
+	if(f.elements['cadastro[cpf]']){
+		// MaskInput(f.elements['cadastro[cpf]'], '999.999.999-99');
+		$('#cadastro_cpf').mask('999.999.999-99');
+	}
+	if(f.elements['cadastro[cnpj]']){
+		// MaskInput(f.elements['cadastro[cnpj]'], '99.999.999/9999-99');
+		$('#cadastro_cnpj').mask('99.999.999/9999-99');
+	}
+
+	if(f.elements['cadastro[fone_com_ddd]']){
+		// MaskInput(f.elements['cadastro[fone_com_ddd]'], '99');
+		$('#cadastro_fone_com_ddd').mask('99');
+	}
+	
+	if(f.elements['cadastro[fone_com]']){
+		// MaskInput(f.elements['cadastro[fone_com]'], '9999-9999');
+		$('#cadastro_fone_com').mask('9999-9999');
+	}
+
+	if(f.elements['cadastro[data_nascimento]']){
+		// MaskInput(f.elements['cadastro[data_nascimento]'], '99/99/9999');
+		$('#cadastro_data_nascimento').mask('99/99/9999');
+	}
+
+	if(f.elements['cadastro[fone_nextel]']){
+		//MaskInput(f.elements['cadastro[fone_nextel]'], '99-99999999');
+	}
+	
+	if(f.elements['cadastro[comoconheceu_id]']
+		&&f.elements['cadastro[comoconheceu_id]'].tagName=='SELECT'){
+	
+		$.ajax({
+			type: 'GET'
+			,url: '{sistema}ajax_comoconheceu_options/?blank=1/'+ new Date().getSeconds()
+			,success: function(msg){
+				f.elements['cadastro[comoconheceu_id]'].innerHTML = msg;
+				selCombo(f.elements['cadastro[comoconheceu_id]'], '{cadastro->comoconheceu_id}');
+			}
+		});	
+	}
+*/
+</script>

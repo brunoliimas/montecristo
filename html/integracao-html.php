@@ -1,0 +1,1 @@
+<?php echo $categoria->html_integracao ?>

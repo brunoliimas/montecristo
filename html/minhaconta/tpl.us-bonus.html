@@ -1,0 +1,105 @@
+<h1 class="listagem">HOME/<span>MINHA CONTA</span></h1>
+
+<div class="d-perfil-usuario">
+	<ul>
+		<!--Pincipal--><li class="s-principal"><a href="#" class="s-principal">Meus Bônus</a></li><!--Marcada-->
+		<li><a href="{index}us_conta">Minha Conta </a></li>
+		<li><a href="{index}us_cad">Meu Cadastro </a></li>
+		<li><a href="{index}us_end">Meus Endereços</a></li>
+		<li><a href="{index}us_hist">Histórico de Compras</a></li>
+		<li><a href="{index}us_acomp">Acompanhar Pedidos</a></li>
+		<li><a href="{index}us_desejo">Meus Favoritos</a></li>
+		<li><a href="{index}us_bonus">Meus Bônus</a></li>
+		<li class="s-borda"><a href="{index}us_news">Newsletter</a></li>
+	</ul>
+	
+	<br clear="all">	
+	<br clear="all">	
+		
+	<div class="d-container-vistos">
+		<p class="p-titulo">Produtos vistos:</p>
+		<a href="javascript:up()" id="up"><img src="{path}img/up-vistos.jpg"></a>
+		<div class="box_visto">
+			<div class="d-vistos">
+				<!-- BEGIN BLOCK_HISTORICO_PRODUTOS -->
+				{produtosVistos}
+				<!-- END BLOCK_HISTORICO_PRODUTOS -->
+			</div>
+		</div>
+		<br />
+		<a href="javascript:down()" id="down"><img src="{path}img/down-vistos.jpg"></a>	
+	</div>
+	
+	
+</div>
+
+<div class="d-perfil-dir">
+	<h2>Bônus</h2>
+
+	<!-- BEGIN BLOCK_SEM_BONUS -->
+	<p class="p-sem-bonus">Ainda não existem bônus associados as suas compras</p>
+	<br />
+	<span class="p-sem-bonus">Os bônus ficam disponíveis a partir da confirmação do pagamento dos seus pedidos	</span>
+	<!-- END BLOCK_SEM_BONUS -->
+
+	<!-- BEGIN BLOCK_COM_BONUS -->
+	<table class="t-historico">
+		<tr>
+			<th style="width:200px;"><span>Data da transação</span></th>
+			<th style="width:220px;"><span>Nº do Pedido</span></th>
+			<th style="width:250px;"><span>Total</span></th>
+			<th style="width:250px;"><span>Data de Validade</span></th>
+			<th style="width:250px;"><span>Já utilizado?</span></th>
+		</tr>
+		<!-- BEGIN BLOCK_BONUS -->
+		<tr>
+			<td><span>{bonus->data_cadastro_formatado}</span></td>
+			<td><span>{bonus->pedido_id}</span></td>
+			<td><span>{bonus->qtd_bonus}</span></td>
+			<td><span>{bonus->data_validade_formatado}</span></td>
+			<td><span>{bonus->st_utilizado_formatado}</span></td>
+		</tr>
+		<!-- END BLOCK_BONUS -->
+	</table>
+	<br />
+	<p class="p-total-bonus">Total em bônus não utilizados: <span>{cadastro->qtd_bonus}</span></p>
+	<p class="p-total-bonus">Total em reais: <span>R$ {cadastro->qtd_bonus_convertidos_em_reais_formatado}</span></p>
+	<br />
+	<!-- END BLOCK_COM_BONUS -->
+	
+	<!-- BEGIN BLOCK_GERAR_CUPOM -->
+	<form>
+		<input type="submit" class="button" name="gerarcupom" value="Gerar cupom de desconto"/>
+	</form>
+	<br />
+	<!-- END BLOCK_GERAR_CUPOM -->
+	
+	<!-- BEGIN BLOCK_CUPOM -->
+	<br clear="all" />
+	<br />
+	<h2>Cupons de desconto</h2>
+	<p class="p-sem-bonus">Você já tem cupons de desconto para usar, abaixo você pode ver os códigos e o valor de desconto que ela oferece</p>
+	<br />
+	
+	<table class="t-historico">
+		<tr>
+			<th style="width:300px;"><span>Código do cupom</span></th>
+			<th style="width:250px;"><span>Data do cadastro</span></th>
+			<th style="width:250px;"><span>Data de vencimento</span></th>
+			<th style="width:250px;"><span>Valor</span></th>
+			<th style="width:250px;"><span>Já utilizado?</span></th>
+		</tr>
+		<!-- BEGIN BLOCK_CUPOM_ITEM -->
+		<tr>
+			<td><span>{cupom->codigo}</span></td>
+			<td><span>{cupom->data_cadastro_formatado}</span></td>
+			<td><span>{cupom->data_validade_formatado}</span></td>
+			<td><span>{cupom->valor_formatado}</span></td>
+			<td><span>{cupom->ja_utilizado_formatado}</span></td>
+		</tr>
+		<!-- END BLOCK_CUPOM_ITEM -->
+	</table>
+	<br />
+	<!-- END BLOCK_CUPOM -->
+	
+</div>

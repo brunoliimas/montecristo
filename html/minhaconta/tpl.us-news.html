@@ -1,0 +1,51 @@
+<h1 class="listagem">HOME/<span>MINHA CONTA </span></h1>	
+
+<div class="d-perfil-usuario">
+	<ul>
+		<!--Principal-->
+		<li class="s-principal"><a href="#" class="s-principal" >Newsletter</a></li>
+		<!--Marcada-->
+		<li><a href="{index}us_conta">Minha Conta </a></li>
+		<li><a href="{index}us_cad">Meu Cadastro </a></li>
+		<li><a href="{index}us_end">Meus Endereços</a></li>
+		<li><a href="{index}us_hist">Histórico de Compras</a></li>
+		<li><a href="{index}us_acomp">Acompanhar Pedidos</a></li>
+		<li><a href="{index}us_desejo">Meus Favoritos</a></li>
+		<li><a href="{index}us_bonus">Meus Bônus</a></li>
+		<li class="s-borda"><a href="{index}us_news">Newsletter</a></li>
+	</ul>
+	
+	<br clear="all">	
+	<br clear="all">	
+		
+	<div class="d-container-vistos">
+		<p class="p-titulo">Produtos vistos:</p>
+		<a href="javascript:up()" id="up"><img src="{path}img/up-vistos.jpg"></a>
+		<div class="box_visto">
+			<div class="d-vistos">
+				<!-- BEGIN BLOCK_HISTORICO_PRODUTOS -->
+				{produtosVistos}
+				<!-- END BLOCK_HISTORICO_PRODUTOS -->
+			</div>
+		</div>
+		<br />
+		<a href="javascript:down()" id="down"><img src="{path}img/down-vistos.jpg"></a>	
+	</div>
+</div>
+
+<div class="d-perfil-dir">
+	<h2> Newsletter </h2>
+	<form name="formUsNews" method="post">
+		<input type="hidden" name="enviar" value="1" />
+		<div class="d-new">			
+			<p>
+				<input type="checkbox" name="st_newsletter" id="checkbox"value="S" {cadastro->st_newsletter_checked} />
+				<label for="checkbox" style="font-family:LucidaSansDemibold">Desejo receber informações por e-mail</label>
+			</p>
+		</div>
+		<br clear="all"	>
+		<a href="javascript:document.forms.formUsNews.submit()" class="a-new">
+			Salvar
+		</a>
+	</form>
+</div>

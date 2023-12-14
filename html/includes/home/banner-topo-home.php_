@@ -1,0 +1,64 @@
+<?php
+
+$banners = get_banners_principais($categoria_id=0, $colecao_id=0, true);
+
+if(@$banners  && sizeof($banners)>0): ?>
+    <!-- banner start here -->
+
+        <div class="container-fluid padding_0" style="padding:0px;">
+            <div class="col-sm-12 padding_0" style="padding:0px;">
+                <div class="swiper-container" id="bannerPrincipalSlide">
+                    <div class="swiper-wrapper">
+                <?php
+                $i = 0;
+                $names = '';
+
+                foreach($banners as $row):
+                    $names.= $row->titulo .",";
+                    hidratar('bannerprincipal2',$row);
+
+                    ?>
+                    <div class="swiper-slide" style="position:relative;">
+                        <img class="banner-img" src="admin/<?php echo $row->img1?>" style="width:100%;">
+                        <div class="container cst-<?php echo $row->custom6 ?>">
+                            <div class="row">
+                              <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 div-texto-banner" >
+                                    <div class="informacoes">
+                                        <h2 class="<?php echo $row->css_fonte_cor ?> <?php echo $row->css_fonte_tamanho ?>">
+                                            <?php
+                                            echo anchor($row->custom1,$row->titulo);
+                                            ?>
+                                        </h2>
+                                       <p style="max-width:540px;" class="text-banner-home <?php echo $row->css_fonte_cor ?> <?php echo $row->css_fonte_tamanho ?> texto-banner">
+                                            <?php
+                                            echo anchor($row->custom1,$row->conteudo);
+                                            ?>
+                                        </p>
+                                        <br>
+                                        <?php
+                                        echo anchor(
+                                            $row->custom1,
+                                            ( !empty($row->custom5) ? $row->custom5 : 'Descubra mais' ),
+                                            "class=' descubramais_btn_{$row->css_fonte_cor} btn btn-default {$row->css_fonte_cor} {$row->css_fonte_tamanho}'"
+                                        );
+                                        ?>
+                                    </div>
+                              </div>
+                            </div>
+                        </div>
+                    </div>
+                <?php
+                     $i++;
+                endforeach ;
+                ?>
+                    </div>
+                </div>
+					<div class="swiper-pagination"></div>
+            </div>
+        </div>
+
+            <input type="hidden" id="names-banners" value="<?php echo $names ?>">
+
+<?php endif; ?>
+
+

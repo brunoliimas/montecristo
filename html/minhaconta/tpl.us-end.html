@@ -1,0 +1,43 @@
+<h1 class="listagem">HOME/<span>MEUS ENDEREÇOS</span></h1>	
+<div class="d-perfil-usuario">
+	<ul>
+		<li class="s-principal"><a href="#" class="s-principal" >Meus Endereços</a></li>
+		<li><a href="{index}us_conta">Minha Conta </a></li>
+		<li><a href="{index}us_cad">Meu Cadastro</a></li>
+		<li><a href="{index}us_end">Meus Endereços</a></li>
+		<li><a href="{index}us_hist">Histórico de Compras</a></li>
+		<li><a href="{index}us_acomp">Acompanhar Pedidos</a></li>
+		<li><a href="{index}us_desejo">Meus Favoritos</a></li>
+		<li><a href="{index}us_bonus">Meus Bônus</a></li>
+		<li class="s-borda"><a href="{index}us_news">Newsletter</a></li>
+	</ul>
+	
+	<br clear="all">	
+	<br clear="all">	
+		
+	<div class="d-container-vistos">
+		<p class="p-titulo">Produtos vistos:</p>
+		<a href="javascript:up()" id="up"><img src="{path}img/up-vistos.jpg"></a>
+		<div class="box_visto">
+			<div class="d-vistos">
+				<!-- BEGIN BLOCK_HISTORICO_PRODUTOS -->
+				{produtosVistos}
+				<!-- END BLOCK_HISTORICO_PRODUTOS -->
+			</div>
+		</div>
+		<br />
+		<a href="javascript:down()" id="down"><img src="{path}img/down-vistos.jpg"></a>	
+	</div>
+	
+</div>
+<div class="d-perfil-dir">
+	<h2>Meus endereços</h2>
+	<div class="d-endereco">
+		<!-- BEGIN BLOCK_ENDERECO_LIST -->
+		{endereco->etiqueta_html}
+		<!--a href="{index}us_end_edit/{endereco->id}">Editar endereço de cobrança padrão</a-->
+		<br />
+		<!-- END BLOCK_ENDERECO_LIST -->
+		<a href="{index}us_end_edit/" class="a-novo">Novo</a>
+	</div>
+</div>

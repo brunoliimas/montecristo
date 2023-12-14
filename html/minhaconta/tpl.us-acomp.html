@@ -1,0 +1,73 @@
+<h1 class="listagem">HOME/<span>MINHA CONTA</span></h1>	
+
+<div class="d-perfil-usuario">
+	<ul>
+		<!--Pincipal--><li class="s-principal"><a href="#" class="s-principal" >Acompanhar Pedidos</a></li><!--Marcada-->
+		<li><a href="{index}us_conta">Minha Conta </a></li>
+		<li><a href="{index}us_cad">Meu Cadastro </a></li>
+		<li><a href="{index}us_end">Meus Endereços</a></li>
+		<li><a href="{index}us_hist">Histórico de Compras</a></li>
+		<li><a href="{index}us_acomp">Acompanhar Pedidos</a></li>
+		<li><a href="{index}us_desejo">Meus Favoritos</a></li>
+		<li><a href="{index}us_bonus">Meus Bônus</a></li>
+		<li class="s-borda"><a href="{index}us_news">Newsletter</a></li>
+	</ul>
+	
+	<br clear="all">	
+	<br clear="all">	
+		
+	<div class="d-container-vistos">
+		<p class="p-titulo">Produtos vistos:</p>
+		<a href="javascript:up()" id="up"><img src="{path}img/up-vistos.jpg"></a>
+		<div class="box_visto">
+			<div class="d-vistos">
+				<!-- BEGIN BLOCK_HISTORICO_PRODUTOS -->
+				{produtosVistos}
+				<!-- END BLOCK_HISTORICO_PRODUTOS -->
+			</div>
+		</div>
+		<br />
+		<a href="javascript:down()" id="down"><img src="{path}img/down-vistos.jpg"></a>	
+	</div>
+	
+	
+</div>
+
+<div class="d-perfil-dir">
+	<h2> Acompanhar Pedidos </h2>
+
+	<!-- BEGIN BLOCK_COM_ACOM_PED -->
+	<table class="t-historico">
+		<tr>
+			<th style="width:80px"><span>Data</span></th>
+			<th style="width:160px"><span>Nº do Pedido</span></th>
+			<th style="width:200px"><span>Valor total da compra</span></th>
+			<th style="width:200px"><span>Status</span></th>
+			<th style="width:150px"><span>C&oacute;d. Rastreamento</span></th>
+		</tr>
+		<!-- BEGIN BLOCK_LIST_PEDIDO -->
+		<tr class="{tr_style}">
+			<td><span>{list_pedido->data_formatada}</span></td>
+			<td>
+				<span>
+					<a href="{index}us_det_pedido/{list_pedido->id}" style="color:#bc272d;">{list_pedido->id}
+					<!-- BEGIN BLOCK_LIST_VALEPRESENTE -->
+						(vale presente)
+					<!-- END BLOCK_LIST_VALEPRESENTE -->
+					</a>
+				</span>
+			</td>
+			<td><span>R$ {list_pedido->valor_total_formatado}</span></td>
+			<td><span style="color:#BD272D;">{list_pedido->pedidostatus_nome}</span></td>
+			<td><span>{list_pedidoenvio->rastreamento}</span></td>
+		</tr>
+		<!-- END BLOCK_LIST_PEDIDO -->
+	</table>
+	<!-- END BLOCK_COM_ACOM_PED -->
+	
+	<!-- BEGIN BLOCK_SEM_ACOM_PED -->
+	<p class="p-sem-bonus">Ainda não existem pedidos associados as suas compras</p>
+	<br clear="all">
+	<span class="p-sem-bonus">Os pedidos ficam disponíveis assim que você finalizar uma compra</span>
+	<!-- END BLOCK_SEM_ACOM_PED -->
+</div>

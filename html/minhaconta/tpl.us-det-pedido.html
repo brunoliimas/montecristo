@@ -1,0 +1,255 @@
+<h1 class="listagem">HOME/<span>MINHA CONTA</span></h1>
+
+<div class="d-perfil-usuario">
+	<ul>
+		<!--Pincipal--><li class="s-principal"><a href="#" class="s-principal" >Status do Pedido </a></li><!--Marcada-->
+		<li><a href="{index}us_conta">Minha Conta </a></li>
+		<li><a href="{index}us_cad">Meu Cadastro </a></li>
+		<li><a href="{index}us_end">Meus Endereços</a></li>
+		<li><a href="{index}us_hist">Histórico de Compras</a></li>
+		<li><a href="{index}us_acomp">Acompanhar Pedidos</a></li>
+		<li><a href="{index}us_desejo">Meus Favoritos</a></li>
+		<li><a href="{index}us_bonus">Meus Bônus</a></li>
+		<li class="s-borda"><a href="{index}us_news">Newsletter</a></li>
+	</ul>
+	
+	<br clear="all">	
+	<br clear="all">	
+		
+	<div class="d-container-vistos">
+		<p class="p-titulo">Produtos vistos:</p>
+		<a href="javascript:up()" id="up"><img src="{path}img/up-vistos.jpg"></a>
+		<div class="box_visto">
+			<div class="d-vistos">
+				<!-- BEGIN BLOCK_HISTORICO_PRODUTOS -->
+				{produtosVistos}
+				<!-- END BLOCK_HISTORICO_PRODUTOS -->
+			</div>
+		</div>
+		<br />
+		<a href="javascript:down()" id="down"><img src="{path}img/down-vistos.jpg"></a>	
+	</div>
+</div>
+
+<div class="d-perfil-dir">
+	<h2>Número do Pedido: <p>{pedido->id}</p></h2>
+	<h2>Status do Pedido: <p>{pedido->pedidostatus_nome}</p></h2>
+	<h2>Forma de pagamento: <p>{pedido->formapagamento_nome}</p></h2>
+
+	<div class="d-pagamento">
+		<div class="d-1">
+			<table  border="0" height="80" style="margin-left:10px;">
+				<tr>
+					<td>
+						<p>{pedido->pedidostatus_nome} </p>
+						<br />
+						<!-- BEGIN BLOCK_BOLETO -->
+						<span>{pedido->html_reimpressao_boleto}</span>
+						<!-- END BLOCK_BOLETO -->
+					</td>
+				</tr>
+			</table>
+		</div>
+
+		<div class="d-2">
+			<p>Total de Produtos:</p>
+			<span>R$ {pedido->valor_produtos_formatado}</span>
+		</div>
+
+		<div class="d-2">
+			<p>Desconto:</p>
+			<span>R$ {pedido->valor_desconto_formatado}</span>
+		</div>
+
+		<div class="d-2">
+			<p>Frete:</p>
+			<span>R$ {pedido->valor_frete_formatado}</span>
+		</div>
+
+		<div class="d-2">
+			<p>Emblagem:</p>
+			<span>R$ {pedido->valor_embalagem_formatado}</span>
+		</div>
+
+		<div class="d-2">
+			<p>Total de Pedidos:	</p>
+			<span>R$ {pedido->valor_total_formatado}</span>
+		</div>
+
+		<div class="d-2">
+			<p>Pagamento:</p>
+			<span>{pedido->parcelas}x de {pedido->valor_parcela_formatado}</span>
+			<br clear="all">
+		</div>
+	</div>
+
+		<br clear="all">
+		<br clear="all">
+
+		<div class="d-status">
+			<div class="d-1">
+				<p>Número do pedido: </p>
+				<br clear="all">
+				<span>{pedido->id}</span>
+				<br clear="all">
+				<br clear="all">
+				<p>Data da compra: </p>
+				<br clear="all">
+				<span>{pedido->data_cadastro_formatado}</span>
+			</div>
+
+			<div class="d-2">
+				<p> Endereço de entrega </p>
+				<!-- BEGIN BLOCK_ENTREGA -->
+				<span>{pedido->entrega_formatada}</span>
+				<!-- END BLOCK_ENTREGA -->
+			</div>
+			<div class="d-2">
+				<p>Endereço de entrega</p>
+				<span>{pedido->entrega_formatada}</span>
+			</div>
+			<br clear="all">
+			<div class="d-3">
+				<div>
+					<img src="{path}img/status-verde.jpg" />
+					<span class="s-1">Compra Registrada</span>
+					<br />
+					<span>{pedido->data_hora_formatada}</span>
+				</div>
+
+				<!-- BEGIN BLOCK_PEDIDO_CANCELADO -->
+				<div>
+					<img src="{path}img/status-vermelho.jpg" />
+					<span class="s-1">Cancelado</span>
+					<br />
+					<span>{pedido->data_hora_cancelado_formatada}</span>
+				</div>
+				<!-- END BLOCK_PEDIDO_CANCELADO -->
+
+				<!-- BEGIN BLOCK_PEDIDO_PAGAMENTO_PENDENTE -->
+				<div>
+					<img src="{path}img/status-vermelho.jpg" />
+					<span class="s-1">Pagamento</span>
+					<br />
+					<span>Aguardando</span>
+				</div>
+				<!-- END BLOCK_PEDIDO_PAGAMENTO_PENDENTE -->
+				<!-- BEGIN BLOCK_PEDIDO_PAGAMENTO_OK -->
+				<div>
+					<img src="{path}img/status-verde.jpg" />
+					<span class="s-1">Pagamento</span>
+					<br />
+					<span>{pedido->data_hora_pagamento_formatada}</span>
+				</div>
+				<!-- END BLOCK_PEDIDO_PAGAMENTO_OK -->
+
+				<!-- BEGIN BLOCK_PEDIDO_TRANSPORTE_PENDENTE -->
+				<div>
+					<img src="{path}img/status-vermelho.jpg" />
+					<span class="s-1">Transporte</span>
+					<br />
+					<span>Aguardando</span>
+				</div>
+				<!-- END BLOCK_PEDIDO_TRANSPORTE_PENDENTE -->
+				<!-- BEGIN BLOCK_PEDIDO_TRANSPORTE_OK -->
+				<div>
+					<img src="{path}img/status-verde.jpg" />
+					<span class="s-1">Transporte</span>
+					<br />
+					<span>{pedido->data_hora_envio_formatada}</span>
+				</div>
+				<!-- END BLOCK_PEDIDO_TRANSPORTE_OK -->
+
+				<!-- BEGIN BLOCK_PEDIDO_ENTREGA_PENDENTE -->
+				<div>
+					<img src="{path}img/status-vermelho.jpg" />
+					<span class="s-1">Entrega</span>
+					<br />
+					<span>Aguardando</span>
+				</div>
+				<!-- END BLOCK_PEDIDO_ENTREGA_PENDENTE -->
+				<!-- BEGIN BLOCK_PEDIDO_ENTREGA_OK -->
+				<div>
+					<img src="{path}img/status-verde.jpg" />
+					<span class="s-1">Entrega</span>
+					<br />
+					<span>{pedido->data_hora_entrega_formatada}</span>
+				</div>
+				<!-- END BLOCK_PEDIDO_ENTREGA_OK -->
+
+				<br clear="all">
+			</div>
+		</div>
+
+		<br clear="all">
+		<br clear="all">
+		<br clear="all">
+		<!-- BEGIN BLOCK_LIST_VALEPRESENTE -->
+		<!--table class="t-vale">
+			<tr>
+				<td colspan="3">Vale Presente</b><br /><br /></td>
+			</tr>
+			<tr>
+				<th>Nome destinatário:</th>
+				<td style="width:50px;">&nbsp;</td>
+				<td>{valepresente->nome}</td>
+			</tr>
+			<tr>
+				<th>E-mail destinatário:</th>
+				<td>&nbsp;</td>
+				<td>{valepresente->email}</td>
+			</tr>
+			<tr>
+				<th>Mensagem:</th>
+				<td>&nbsp;</td>
+				<td>{valepresente->mensagem_html}</td>
+			</tr>
+			<tr>
+				<th>Valor do vale:</th>
+				<td>&nbsp;</td>
+				<td>R$ {valepresente->valor_formatado}</td>
+			</tr>
+			<tr>
+				<th>Data de validade:</th>
+				<td>&nbsp;</td>
+				<td>R$ {valepresente->data_validade_formatado}</td>
+			</tr>
+		</table-->
+		<!-- END BLOCK_LIST_VALEPRESENTE -->
+
+		<!-- BEGIN BLOCK_LIST_PEDIDO_ITENS -->
+		<table class="t-produtos">
+			<tr>
+				<th style="width:80px;">Foto</th>
+				<th style="width:120px;">Produto</th>
+				<th style="width:120px;">Preço</th>
+				<th style="width:120px;">Qtd</th>
+				<th style="width:100px;">Sub-total</th>
+			</tr>
+			<!-- BEGIN BLOCK_LIST_PEDIDOITEM -->
+			<tr>
+				<td>
+					<!--a href="{index}det/{list_pedido->item_id}"-->
+						<img src="{path}img/produtos/1/{list_pedidoitem->item_imagem}" >
+					<!--/a-->
+				</td>
+				<td>
+					<!--span>{list_pedidoitem->item_referencia}</span-->
+					{list_pedidoitem->item_nome}
+					<br />{list_pedidoitem->variacao_descricao_html}
+				</td>
+				<td>R$ {list_pedidoitem->item_preco_formatado}</td>
+				<td>{list_pedidoitem->item_qtd}</td>
+				<td><span>R$ {list_pedidoitem->sub_total_formatado}</span></td>
+			</tr>
+			<!-- END BLOCK_LIST_PEDIDOITEM -->
+			<!--tr>
+				<td colspan="3">
+					<a href="#">+ 3 outros (mostrar)</a>
+					<input type="button" class="button" value="Detalhes">
+				</td>
+			</tr-->
+		</table>
+		<!-- END BLOCK_LIST_PEDIDO_ITENS -->
+	<br clear="all">
+</div>

@@ -1,0 +1,130 @@
+<h1 class="listagem">HOME/<span>MINHA CONTA</span></h1>	
+
+<div class="d-perfil-usuario">
+	<ul>
+		<!-- Pincipal --><li class="s-principal"><a href="#" class="s-principal">Minha Conta</a></li><!-- Marcada -->
+		<li><a href="{index}us_conta">Minha Conta </a></li>
+		<li><a href="{index}us_cad">Meu Cadastro </a></li>
+		<li><a href="{index}us_end">Meus Endereços</a></li>
+		<li><a href="{index}us_hist">Histórico de Compras</a></li>
+		<li><a href="{index}us_acomp">Acompanhar Pedidos</a></li>
+		<li><a href="{index}us_desejo">Meus Favoritos</a></li>
+		<li><a href="{index}us_bonus">Meus Bônus</a></li>
+		<li class="s-borda"><a href="{index}us_news">Newsletter</a></li>
+	</ul>
+
+	<br clear="all">	
+	<br clear="all">	
+		
+	<div class="d-container-vistos">
+		<p class="p-titulo">Produtos vistos:</p>
+		<a href="javascript:up()" id="up"><img src="{path}img/up-vistos.jpg"></a>
+		<div class="box_visto">
+			<div class="d-vistos">
+				<!-- BEGIN BLOCK_HISTORICO_PRODUTOS -->
+				{produtosVistos}
+				<!-- END BLOCK_HISTORICO_PRODUTOS -->
+			</div>
+		</div>
+		<br />
+		<a href="javascript:down()" id="down"><img src="{path}img/down-vistos.jpg"></a>	
+	</div>
+	
+</div>
+
+<div class="d-perfil-dir">
+	<h2>Minha Conta</h2>
+	
+	<!-- BEGIN BLOCK_COM_PEDIDO -->
+	<div class="d-minha-conta">
+		<span>Olá {cadastro->nome}!</span>
+		<br />
+		<span>
+			Nesta página, você pode alterar seus dados pessoais, dados de acesso ao site, visualizar andamento de suas <br />
+			comprar e ainda consultar os produtos que ja comprou, assim como seus bônus.
+		</span>
+		<p class="p-1">Pedidos Recentes</p>
+		<!--a href="{index}us_hist" class="a-1">Ver todos </a-->
+		<div class="d-azul-2"> 
+			<p class="p-10"><!-- 1Item(s) -->&nbsp;</p>
+		</div>
+		<div class="d-cinza-2">
+			<table cellspacing="8" width="100%">
+				<tr>
+					<td class="td-1" width="80px">Pedido nº</td>				
+					<td class="td-1" width="130px">Data</td>
+					<td class="td-1" width="160px">Endereço</td>
+					<td class="td-1" width="140px">Total do pedido</td>
+				</tr>
+				<!-- BEGIN BLOCK_LIST_PEDIDO_CONTA -->
+				<tr>
+					<td><a href="{index}us_det_pedido/{list_pedido->id}" style="color:#BD272D;">{list_pedido->id}</a></td>
+					<td>{list_pedido->data_formatada}</td>
+					<td>{list_pedido->logradouro},&nbsp;{list_pedido->numero}</td>
+					<td>R$ {list_pedido->valor_total}</td>
+				</tr>
+				<!-- END BLOCK_LIST_PEDIDO_CONTA -->
+			</table>
+			<a href="{index}us_hist" class="a-1">Ver pedidos </a>
+		</div>
+	
+	
+		<p class="p-1">Informações da Conta</p>
+		<div class="d-azul-2"> 
+			<!-- BEGIN BLOCK_DADOS_LIST -->			
+			<p class="p-12">
+				Dados de Cobrança
+				<a class="a-12" href="{index}us_cad">Editar</a><br />
+			</p>			
+			<br clear="all" />
+			{dados_cobranca}
+			<!-- END BLOCK_DADOS_LIST -->
+			<!--a class="a-10" href="{index}us_cad">Alterar senha</a-->
+			<br clear="all" />
+		</div>
+		
+		<p class="p-1">Meus Endereços</p>
+		<div class="d-cinza-2" style="margin-top:15px">
+			<!-- BEGIN BLOCK_ENDERECO_LIST -->
+			{endereco->etiqueta_html}
+			<!-- END BLOCK_ENDERECO_LIST -->
+		</div>
+	</div>	
+	<!-- END BLOCK_COM_PEDIDO -->
+		
+	<!-- BEGIN BLOCK_SEM_PEDIDO -->
+	<div class="d-minha-conta">
+		<span>Olá {cadastro->nome}!</span>
+		<br />
+		<span>
+			Nesta página, você pode alterar seus dados pessoais, dados de acesso ao site, visualizar andamento de suas <br />
+			compras e ainda consultar os produtos que já comprou, assim como seus bônus.
+		</span>
+		
+		<p class="p-1">Informações da Conta</p>
+		<div class="d-azul-2"> 
+			<!-- BEGIN BLOCK_DADOS_LIST2 -->
+			<p class="p-12">
+				Dados de Cobrança
+				<a class="a-12" href="{index}us_cad/">Editar</a><br />
+			</p>			
+			<br clear="all" />
+			{dados_cobranca}
+			<!-- END BLOCK_DADOS_LIST2 -->
+			<!--a class="a-10" href="{index}us_cad">Alterar senha</a--->
+			<br clear="all" />
+		</div>
+		
+		<p class="p-1">Meus Endereços</p>
+		<div class="d-cinza-2" style="margin-top:15px">
+			<!-- BEGIN BLOCK_ENDERECO_LIST2 -->
+			{endereco->etiqueta_html}
+			<!-- END BLOCK_ENDERECO_LIST2 -->
+		</div>
+		
+		
+	</div>
+	<!-- END BLOCK_SEM_PEDIDO -->
+</div>
+<br clear="all">
+<!-- {volta_tela} -->
